@@ -111,10 +111,10 @@ class Mpris2(base._TextBox):
                 if isinstance(val, str):
                     meta_list.append(val)
                 elif isinstance(val, list):
-                    val = " - ".join((y for y in val if isinstance(y, str)))
+                    val = " • ".join((y for y in val if isinstance(y, str)))
                     meta_list.append(val)
 
-            self.displaytext = ' - '.join(meta_list)
+            self.displaytext = ' • '.join(meta_list)
             self.displaytext.replace('\n', '')
 
         playbackstatus = getattr(changed_properties.get('PlaybackStatus'),

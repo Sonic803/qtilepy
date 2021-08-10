@@ -1233,14 +1233,7 @@ class Qtile(CommandObject):
             "window",
             strict_completer=True
         )
-
-    def find_class(self, wid: int) -> None:
-        window = self.windows_map.get(wid)
-        if window and window.group:
-            if not window.group.screen:
-                self.current_screen.set_group(window.group)
-            window.group.focus(window, False)
-
+        
     def cmd_findclass(self, prompt: str = "window", widget: str = "prompt") -> None:
         """Launch prompt widget to find a window of the given name
 
@@ -1258,7 +1251,7 @@ class Qtile(CommandObject):
 
         mb.start_input(
             prompt,
-            self.find_class,
+            self.find_window,
             "class",
             strict_completer=True
         )
